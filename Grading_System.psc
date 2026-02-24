@@ -16,6 +16,7 @@ Algoritmo Grading_System
 		Escribir "3) Baja Definitiva"
 		Escribir "4) Credits"
 		Escribir "5) Exit"
+		Escribir ""
 		
 		Leer opc
 		
@@ -52,6 +53,7 @@ Algoritmo Grading_System
 			Caso 3: //Baja definitiva Calculation - Justin
 				
 			Caso 4: //Equipo
+				Limpiar Pantalla
 				Escribir "==========================="
 				Escribir "          CREDITS          "
 				Escribir "==========================="
