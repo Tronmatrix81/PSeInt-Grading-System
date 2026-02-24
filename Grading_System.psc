@@ -50,9 +50,9 @@ Algoritmo Grading_System
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 				
-			Caso 3: //Baja definitiva Calculation - Justin
+			Caso 3: //Baja definitiva Calculation - Justie
 				
-			Caso 4: //Equipo
+			Caso 4: //Equipo - Justie
 				Limpiar Pantalla
 				Escribir "==========================="
 				Escribir "          CREDITS          "
@@ -61,11 +61,14 @@ Algoritmo Grading_System
 				Escribir "Eric Gallo Gardea a394569"
 				Escribir "Josue Caleb Escobedo Herrera a394468"
 				Escribir "Justie Ariel Loya Martinez a394350"
+				Escribir ""
 				
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 			Caso 5: //Salir
-				
+				Escribir "Exiting system..."
+				Esperar 1500 Milisegundos
+				run = Falso
 		FinSegun
 		
 	FinMientras
