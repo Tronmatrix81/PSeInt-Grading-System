@@ -6,7 +6,7 @@ Algoritmo Grading_System
 	Definir minimumAttendance Como Real
 	Definir choice Como caracter
 	Definir p1,p2,p3,prom,error Como Real
-
+	Definir minimum_subjects Como Real
 	
 	Mientras run==Verdadero Hacer
 		Borrar Pantalla
@@ -44,8 +44,6 @@ Algoritmo Grading_System
 						FinSi
 					FinMientras
 					
-					
-					
 					Si p2 <= 10 y p2 >= 0
 						Escribir "Write your third partial grade"
 						Leer p3
@@ -59,9 +57,6 @@ Algoritmo Grading_System
 						FinSi					
 					FinSi
 				FinMientras
-				
-				
-				
 				
 			Caso 2: //No ordinario Calculation - Eric
 				Borrar Pantalla
@@ -86,7 +81,41 @@ Algoritmo Grading_System
 				Si absences > minimumAttendance Entonces
 					Escribir "You are NOT able to present the No Ordinary Exam."
 				SiNo
-					Escribir "You are able to present the No Ordinary Exam."
+					Borrar Pantalla
+					Escribir "How many subjects coursed subjects do you have?"
+					Leer total_subjects
+					
+					Mientras total_subjects <= 0 o total_subjects > 10 Hacer
+						Borrar Pantalla
+						Escribir "Invalid amount, re-enter [1-10] subjects!"
+						Leer total_subjects
+					FinMientras
+					
+					Borrar Pantalla
+					
+					Escribir "How many failed subjects do you have?"
+					Leer failed_subjects
+					
+					Mientras failed_subjects < 0 o failed_subjects > total_subjects Hacer
+						Borrar Pantalla
+						Escribir "Invalid amount! Re-enter [0 - Total Subjects]"
+						Leer failed_subjects
+					FinMientras
+					
+					minimum_subjects = total_subjects * 0.5
+					
+					Si minimum_subjects No Es Entero Entonces
+						minimum_subjects = minimum_subjects + 0.5
+					FinSi
+					
+					Borrar Pantalla
+					
+					Si failed_subjects > minimum_subjects Entonces
+						Escribir "You are NOT able to present the No Ordinary exam."
+					SiNo
+						Escribir "You are able to present the No Ordinary exam."
+					FinSi
+					
 				FinSi
 				
 				Escribir ""
