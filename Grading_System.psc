@@ -4,10 +4,13 @@ Algoritmo Grading_System
 	Definir average Como Real //Promedio en ingles
 	Definir semesterHrs Como Real
 	Definir minimumAttendance Como Real
+
 	Definir choice Como caracter
 	Definir p1,p2,p3,prom,error,r Como Real
 	Error=1
-	
+
+	Definir failedBasics Como Entero
+
 	Mientras run==Verdadero Hacer
 		Borrar Pantalla
 		Escribir "==========================="
@@ -105,9 +108,6 @@ Algoritmo Grading_System
 					
 				FinMientras
 				
-				
-				
-				
 			Caso 2: //No ordinario Calculation - Eric
 				Borrar Pantalla
 				Escribir "How many hours per week is your failed subject?"
@@ -122,23 +122,62 @@ Algoritmo Grading_System
 				semesterHrs = hours * 16 //horas por semestre
 				
 				minimumAttendance = semesterHrs * 0.6 
-				Borrar Pantalla
 				
 				Escribir "How many absences do you have in total of such subject?"
 				Leer absences //falta de asistencias
 				
-				Borrar Pantalla
-				Si absences > minimumAttendance Entonces
+				Si absences < minimumAttendance Entonces
 					Escribir "You are NOT able to present the No Ordinary Exam."
 				SiNo
-					Escribir "You are able to present the No Ordinary Exam."
+					Borrar Pantalla
+					Escribir "How many subjects coursed subjects do you have?"
+					Leer total_subjects
+					
+					Mientras total_subjects <= 0 o total_subjects > 10 Hacer
+						Borrar Pantalla
+						Escribir "Invalid amount, re-enter [1-10] subjects!"
+						Leer total_subjects
+					FinMientras
+					
+					Borrar Pantalla
+					
+					Escribir "How many failed subjects do you have?"
+					Leer failed_subjects
+					
+					Mientras failed_subjects < 0 o failed_subjects > total_subjects Hacer
+						Borrar Pantalla
+						Escribir "Invalid amount! Re-enter [0 - Total Subjects]"
+						Leer failed_subjects
+					FinMientras
+					
+					minimum_subjects = total_subjects * 0.5
+					
+					Si minimum_subjects No Es Entero Entonces
+						minimum_subjects = minimum_subjects + 0.5
+					FinSi
+					
+					Borrar Pantalla
+					
+					Si failed_subjects > minimum_subjects Entonces
+						Escribir "You are NOT able to present the No Ordinary exam."
+					SiNo
+						Escribir "You are able to present the No Ordinary exam."
+					FinSi
+					
 				FinSi
 				
-				Escribir ""
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 				
 			Caso 3: //Baja definitiva Calculation - Justie
+				Escribir "How many basic subjects did you fail? (Physics, Calculus, Algebra)"
+				Leer failedBasics
+				
+			Si !(failedBasics<0 o failedBasics>3)
+				Escribir "How is this possible?"
+				run = Falso
+			FinSi
+			
 				
 			Caso 4: //Equipo - Justie
 				Limpiar Pantalla
@@ -153,11 +192,11 @@ Algoritmo Grading_System
 				
 				Escribir "Press any key to continue..."
 				Esperar Tecla
-			Caso 5: //Salir
+				
+			Caso 5: //Salir - Justie
 				Escribir "Exiting system..."
 				Esperar 1500 Milisegundos
 				run = Falso
 		FinSegun
-		
 	FinMientras
 FinAlgoritmo
