@@ -5,8 +5,8 @@ Algoritmo Grading_System
 	Definir semesterHrs Como Real
 	Definir minimumAttendance Como Real
 	Definir choice Como caracter
-	Definir p1,p2,p3,prom,error Como Real
-	Definir minimum_subjects Como Real
+	Definir p1,p2,p3,prom,error,r Como Real
+	Error=1
 	
 	Mientras run==Verdadero Hacer
 		Borrar Pantalla
@@ -31,10 +31,28 @@ Algoritmo Grading_System
 						Escribir "Write your first partial grade"
 						Leer p1
 						
-						Si p<= 10 y p1>= 0
+						Si p1<= 10 y p1>= 0
 							
-							Escribir "Write your second partial grade"
-							Leer p2
+							
+							yes=N
+						SiNo
+							Escribir "Your grade needs to be between 0 and 10"
+							Escribir "Do you want to write your first partial grade again? Y/N"
+							
+							Leer choice
+							Si choice ="y" o choice="Y"
+								r=0
+							sino
+								Escribir "El programa no puede continuar, seras devuelto al menu"
+								error=322443243312
+							FinSi
+						FinSi
+					FinMientras
+					mientras Choice="Y" o choice="y"
+						Escribir "Write your second partial grade"
+						Leer p2
+						
+						Si p2<= 10 y p2>= 0
 							yes=N
 						SiNo
 							Escribir "Your grade needs to be between 0 and 10"
@@ -43,6 +61,7 @@ Algoritmo Grading_System
 							Leer choice
 						FinSi
 					FinMientras
+					
 					
 					Si p2 <= 10 y p2 >= 0
 						Escribir "Write your third partial grade"
@@ -57,6 +76,9 @@ Algoritmo Grading_System
 						FinSi					
 					FinSi
 				FinMientras
+				
+				
+				
 				
 			Caso 2: //No ordinario Calculation - Eric
 				Borrar Pantalla
@@ -81,50 +103,16 @@ Algoritmo Grading_System
 				Si absences > minimumAttendance Entonces
 					Escribir "You are NOT able to present the No Ordinary Exam."
 				SiNo
-					Borrar Pantalla
-					Escribir "How many subjects coursed subjects do you have?"
-					Leer total_subjects
-					
-					Mientras total_subjects <= 0 o total_subjects > 10 Hacer
-						Borrar Pantalla
-						Escribir "Invalid amount, re-enter [1-10] subjects!"
-						Leer total_subjects
-					FinMientras
-					
-					Borrar Pantalla
-					
-					Escribir "How many failed subjects do you have?"
-					Leer failed_subjects
-					
-					Mientras failed_subjects < 0 o failed_subjects > total_subjects Hacer
-						Borrar Pantalla
-						Escribir "Invalid amount! Re-enter [0 - Total Subjects]"
-						Leer failed_subjects
-					FinMientras
-					
-					minimum_subjects = total_subjects * 0.5
-					
-					Si minimum_subjects No Es Entero Entonces
-						minimum_subjects = minimum_subjects + 0.5
-					FinSi
-					
-					Borrar Pantalla
-					
-					Si failed_subjects > minimum_subjects Entonces
-						Escribir "You are NOT able to present the No Ordinary exam."
-					SiNo
-						Escribir "You are able to present the No Ordinary exam."
-					FinSi
-					
+					Escribir "You are able to present the No Ordinary Exam."
 				FinSi
 				
 				Escribir ""
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 				
-			Caso 3: //Baja definitiva Calculation - Justin
+			Caso 3: //Baja definitiva Calculation - Justie
 				
-			Caso 4: //Equipo
+			Caso 4: //Equipo - Justie
 				Limpiar Pantalla
 				Escribir "==========================="
 				Escribir "          CREDITS          "
@@ -133,11 +121,14 @@ Algoritmo Grading_System
 				Escribir "Eric Gallo Gardea a394569"
 				Escribir "Josue Caleb Escobedo Herrera a394468"
 				Escribir "Justie Ariel Loya Martinez a394350"
+				Escribir ""
 				
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 			Caso 5: //Salir
-				
+				Escribir "Exiting system..."
+				Esperar 1500 Milisegundos
+				run = Falso
 		FinSegun
 		
 	FinMientras
