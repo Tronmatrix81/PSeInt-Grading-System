@@ -27,17 +27,17 @@ Algoritmo Grading_System
 		Leer opc
 		
 		Segun opc Hacer
-			Caso 1: //Promedio de los 3 parciales - Caleb
+			Caso 1: //Promedio de los 3 parciales - Caleb //ESTA CASI TERMINADO
 				Mientras error=1
 					Choice="Y"
-					mientras Choice="Y" o choice="y"
+					mientras Choice="Y" o choice="y" y error=1
 						Escribir "Write your first partial grade"
 						Leer p1
 						
 						Si p1<= 10 y p1>= 0
 							
 							
-							yes=N
+							choice=N
 						SiNo
 							Escribir "Your grade needs to be between 0 and 10"
 							Escribir "Do you want to write your first partial grade again? Y/N"
@@ -51,33 +51,61 @@ Algoritmo Grading_System
 							FinSi
 						FinSi
 					FinMientras
-					mientras Choice="Y" o choice="y"
-						Escribir "Write your second partial grade"
+					Choice="Y"
+					mientras Choice="Y" o choice="y" y error=1
+						Escribir "Write your first partial grade"
 						Leer p2
 						
 						Si p2<= 10 y p2>= 0
-							yes=N
+							
+							
+							choice=N
 						SiNo
 							Escribir "Your grade needs to be between 0 and 10"
 							Escribir "Do you want to write your first partial grade again? Y/N"
 							
 							Leer choice
+							Si choice ="y" o choice="Y"
+								r=0
+							sino
+								Escribir "El programa no puede continuar, seras devuelto al menu"
+								error=322443243312
+							FinSi
 						FinSi
 					FinMientras
-					
-					
-					Si p2 <= 10 y p2 >= 0
+					Choice="y"
+					mientras Choice="Y" o choice="y" y error=1
 						Escribir "Write your third partial grade"
 						Leer p3
 						
-						Si p3 <= 10 y p3 >= 0
-							Escribir "Write your third partial grade"
-							Leer p3
-							prom=(p1*0.3)+(p2*0.3)+(p3*0.4)
-							Escribir "Your average is: ", prom
+						Si p3<= 10 y p3>= 0
 							
-						FinSi					
+							
+							choice=N
+						SiNo
+							Escribir "Your grade needs to be between 0 and 10"
+							Escribir "Do you want to write your first partial grade again? Y/N"
+							
+							Leer choice
+							Si choice ="y" o choice="Y"
+								r=0
+							sino
+								Escribir "El programa no puede continuar, seras devuelto al menu"
+								error=322443243312
+							FinSi
+						FinSi
+					FinMientras
+					Si error=1
+						prom=(p1*0.3)+(p2*0.3)+(p3*0.4)
+						Escribir "Your average is: ", prom	
+						error=23
+						Escribir "Press any key to go to the menu"
+						Esperar Tecla
 					FinSi
+					
+					
+					
+					
 				FinMientras
 				
 			Caso 2: //No ordinario Calculation - Eric
