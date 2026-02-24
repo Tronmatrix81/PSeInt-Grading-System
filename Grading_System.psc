@@ -4,9 +4,17 @@ Algoritmo Grading_System
 	Definir average Como Real //Promedio en ingles
 	Definir semesterHrs Como Real
 	Definir minimumAttendance Como Real
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	Definir choice Como caracter
 	Definir p1,p2,p3,prom,error,r Como Real
 	Error=1
+=======
+	Definir failedBasics Como Entero
+>>>>>>> Stashed changes
+=======
+	Definir failedBasics Como Entero
+>>>>>>> Stashed changes
 	
 	Mientras run==Verdadero Hacer
 		Borrar Pantalla
@@ -25,6 +33,8 @@ Algoritmo Grading_System
 		
 		Segun opc Hacer
 			Caso 1: //Promedio de los 3 parciales - Caleb
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 				Mientras error=1
 					Choice="Y"
 					mientras Choice="Y" o choice="y"
@@ -79,6 +89,10 @@ Algoritmo Grading_System
 				
 				
 				
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 				
 			Caso 2: //No ordinario Calculation - Eric
 				Borrar Pantalla
@@ -94,13 +108,11 @@ Algoritmo Grading_System
 				semesterHrs = hours * 16 //horas por semestre
 				
 				minimumAttendance = semesterHrs * 0.6 
-				Borrar Pantalla
 				
 				Escribir "How many absences do you have in total of such subject?"
 				Leer absences //falta de asistencias
 				
-				Borrar Pantalla
-				Si absences > minimumAttendance Entonces
+				Si absences < minimumAttendance Entonces
 					Escribir "You are NOT able to present the No Ordinary Exam."
 				SiNo
 					Borrar Pantalla
@@ -140,11 +152,18 @@ Algoritmo Grading_System
 					
 				FinSi
 				
-				Escribir ""
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 				
 			Caso 3: //Baja definitiva Calculation - Justie
+				Escribir "How many basic subjects did you fail? (Physics, Calculus, Algebra)"
+				Leer failedBasics
+				
+			Si !(failedBasics<0 o failedBasics>3)
+				Escribir "How is this possible?"
+				run = Falso
+			FinSi
+			
 				
 			Caso 4: //Equipo - Justie
 				Limpiar Pantalla
@@ -159,11 +178,11 @@ Algoritmo Grading_System
 				
 				Escribir "Press any key to continue..."
 				Esperar Tecla
-			Caso 5: //Salir
+				
+			Caso 5: //Salir - Justie
 				Escribir "Exiting system..."
 				Esperar 1500 Milisegundos
 				run = Falso
 		FinSegun
-		
 	FinMientras
 FinAlgoritmo
