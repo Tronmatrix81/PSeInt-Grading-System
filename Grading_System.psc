@@ -197,6 +197,7 @@ Algoritmo Grading_System
 				Esperar Tecla
 				
 			Caso 5: //Salir - Justie
+				Borrar Pantalla
 				Escribir "Exiting system..."
 				Esperar 1500 Milisegundos
 				run = Falso
