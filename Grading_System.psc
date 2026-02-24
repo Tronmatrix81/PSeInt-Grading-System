@@ -94,22 +94,25 @@ Algoritmo Grading_System
 				semesterHrs = hours * 16 //horas por semestre
 				
 				minimumAttendance = semesterHrs * 0.6 
+				Borrar Pantalla
 				
 				Escribir "How many absences do you have in total of such subject?"
 				Leer absences //falta de asistencias
 				
-				Si absences < minimumAttendance Entonces
+				Borrar Pantalla
+				Si absences > minimumAttendance Entonces
 					Escribir "You are NOT able to present the No Ordinary Exam."
 				SiNo
 					Escribir "You are able to present the No Ordinary Exam."
 				FinSi
 				
+				Escribir ""
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 				
-			Caso 3: //Baja definitiva Calculation - Justin
+			Caso 3: //Baja definitiva Calculation - Justie
 				
-			Caso 4: //Equipo
+			Caso 4: //Equipo - Justie
 				Limpiar Pantalla
 				Escribir "==========================="
 				Escribir "          CREDITS          "
@@ -118,11 +121,14 @@ Algoritmo Grading_System
 				Escribir "Eric Gallo Gardea a394569"
 				Escribir "Josue Caleb Escobedo Herrera a394468"
 				Escribir "Justie Ariel Loya Martinez a394350"
+				Escribir ""
 				
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 			Caso 5: //Salir
-				
+				Escribir "Exiting system..."
+				Esperar 1500 Milisegundos
+				run = Falso
 		FinSegun
 		
 	FinMientras
