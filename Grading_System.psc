@@ -52,7 +52,16 @@ Algoritmo Grading_System
 			Caso 3: //Baja definitiva Calculation - Justin
 				
 			Caso 4: //Equipo
+				Escribir "==========================="
+				Escribir "          CREDITS          "
+				Escribir "==========================="
+				Escribir ""
+				Escribir "Eric Gallo Gardea a394569"
+				Escribir "Josue Caleb Escobedo Herrera a394468"
+				Escribir "Justie Ariel Loya Martinez a394350"
 				
+				Escribir "Press any key to continue..."
+				Esperar Tecla
 			Caso 5: //Salir
 				
 		FinSegun
