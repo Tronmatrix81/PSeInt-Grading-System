@@ -5,8 +5,8 @@ Algoritmo Grading_System
 	Definir semesterHrs Como Real
 	Definir minimumAttendance Como Real
 	Definir choice Como caracter
-	Definir p1,p2,p3,prom,error Como Real
-
+	Definir p1,p2,p3,prom,error,r Como Real
+	Error=1
 	
 	Mientras run==Verdadero Hacer
 		Borrar Pantalla
@@ -31,10 +31,28 @@ Algoritmo Grading_System
 						Escribir "Write your first partial grade"
 						Leer p1
 						
-						Si p<= 10 y p1>= 0
+						Si p1<= 10 y p1>= 0
 							
-							Escribir "Write your second partial grade"
-							Leer p2
+							
+							yes=N
+						SiNo
+							Escribir "Your grade needs to be between 0 and 10"
+							Escribir "Do you want to write your first partial grade again? Y/N"
+							
+							Leer choice
+							Si choice ="y" o choice="Y"
+								r=0
+							sino
+								Escribir "El programa no puede continuar, seras devuelto al menu"
+								error=322443243312
+							FinSi
+						FinSi
+					FinMientras
+					mientras Choice="Y" o choice="y"
+						Escribir "Write your second partial grade"
+						Leer p2
+						
+						Si p2<= 10 y p2>= 0
 							yes=N
 						SiNo
 							Escribir "Your grade needs to be between 0 and 10"
@@ -43,7 +61,6 @@ Algoritmo Grading_System
 							Leer choice
 						FinSi
 					FinMientras
-					
 					
 					
 					Si p2 <= 10 y p2 >= 0
