@@ -4,18 +4,13 @@ Algoritmo Grading_System
 	Definir average Como Real //Promedio en ingles
 	Definir semesterHrs Como Real
 	Definir minimumAttendance Como Real
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
 	Definir choice Como caracter
 	Definir p1,p2,p3,prom,error,r Como Real
 	Error=1
-=======
+
 	Definir failedBasics Como Entero
->>>>>>> Stashed changes
-=======
-	Definir failedBasics Como Entero
->>>>>>> Stashed changes
-	
+
 	Mientras run==Verdadero Hacer
 		Borrar Pantalla
 		Escribir "==========================="
@@ -33,8 +28,6 @@ Algoritmo Grading_System
 		
 		Segun opc Hacer
 			Caso 1: //Promedio de los 3 parciales - Caleb
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 				Mientras error=1
 					Choice="Y"
 					mientras Choice="Y" o choice="y"
@@ -86,13 +79,6 @@ Algoritmo Grading_System
 						FinSi					
 					FinSi
 				FinMientras
-				
-				
-				
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 				
 			Caso 2: //No ordinario Calculation - Eric
 				Borrar Pantalla
