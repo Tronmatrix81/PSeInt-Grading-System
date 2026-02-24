@@ -4,6 +4,9 @@ Algoritmo Grading_System
 	Definir average Como Real //Promedio en ingles
 	Definir semesterHrs Como Real
 	Definir minimumAttendance Como Real
+	Definir choice Como caracter
+	Definir p1,p2,p3,prom,error Como Real
+
 	
 	Mientras run==Verdadero Hacer
 		Borrar Pantalla
@@ -21,6 +24,43 @@ Algoritmo Grading_System
 		
 		Segun opc Hacer
 			Caso 1: //Promedio de los 3 parciales - Caleb
+				Mientras error=1
+					Choice="Y"
+					mientras Choice="Y" o choice="y"
+						Escribir "Write your first partial grade"
+						Leer p1
+						
+						Si p<= 10 y p1>= 0
+							
+							Escribir "Write your second partial grade"
+							Leer p2
+							yes=N
+						SiNo
+							Escribir "Your grade needs to be between 0 and 10"
+							Escribir "Do you want to write your first partial grade again? Y/N"
+							
+							Leer choice
+						FinSi
+					FinMientras
+					
+					
+					
+					Si p2 <= 10 y p2 >= 0
+						Escribir "Write your third partial grade"
+						Leer p3
+						
+						Si p3 <= 10 y p3 >= 0
+							Escribir "Write your third partial grade"
+							Leer p3
+							prom=(p1*0.3)+(p2*0.3)+(p3*0.4)
+							Escribir "Your average is: ", prom
+							
+						FinSi					
+					FinSi
+				FinMientras
+				
+				
+				
 				
 			Caso 2: //No ordinario Calculation - Eric
 				Borrar Pantalla
