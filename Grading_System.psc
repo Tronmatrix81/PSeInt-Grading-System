@@ -94,11 +94,13 @@ Algoritmo Grading_System
 				semesterHrs = hours * 16 //horas por semestre
 				
 				minimumAttendance = semesterHrs * 0.6 
+				Borrar Pantalla
 				
 				Escribir "How many absences do you have in total of such subject?"
 				Leer absences //falta de asistencias
 				
-				Si absences < minimumAttendance Entonces
+				Borrar Pantalla
+				Si absences > minimumAttendance Entonces
 					Escribir "You are NOT able to present the No Ordinary Exam."
 				SiNo
 					Borrar Pantalla
@@ -138,6 +140,7 @@ Algoritmo Grading_System
 					
 				FinSi
 				
+				Escribir ""
 				Escribir "Press any key to continue..."
 				Esperar Tecla
 				
