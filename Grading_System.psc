@@ -29,9 +29,10 @@ Algoritmo Grading_System
 		
 		Segun opc Hacer
 			Caso 1: //Promedio de los 3 parciales - Caleb //ESTA CASI TERMINADO
+				Borrar Pantalla
 				Mientras error=1
 					Choice="Y"
-					mientras Choice="Y" o choice="y" y error=1
+					mientras (Choice="Y" o choice="y") y error=1
 						Escribir "Write your first partial grade"
 						Leer p1
 						
@@ -47,13 +48,14 @@ Algoritmo Grading_System
 							Si choice ="y" o choice="Y"
 								r=0
 							sino
-								Escribir "El programa no puede continuar, seras devuelto al menu"
+								Escribir "Press any key to continue to the menu..."
+								esperar tecla
 								error=322443243312
 							FinSi
 						FinSi
 					FinMientras
 					Choice="Y"
-					mientras Choice="Y" o choice="y" y error=1
+					mientras (Choice="Y" o choice="y") y error=1
 						Escribir "Write your second partial grade"
 						Leer p2
 						
@@ -68,14 +70,14 @@ Algoritmo Grading_System
 							Leer choice
 							Si choice ="y" o choice="Y"
 								r=0
-							sino
-								Escribir "El programa no puede continuar, seras devuelto al menu"
+								Escribir "Press any key to continue to the menu..."
+								esperar tecla
 								error=322443243312
 							FinSi
 						FinSi
 					FinMientras
 					Choice="y"
-					mientras Choice="Y" o choice="y" y error=1
+					mientras (Choice="Y" o choice="y") y error=1
 						Escribir "Write your third partial grade"
 						Leer p3
 						
@@ -91,7 +93,8 @@ Algoritmo Grading_System
 							Si choice ="y" o choice="Y"
 								r=0
 							sino
-								Escribir "El programa no puede continuar, seras devuelto al menu"
+								Escribir "Press any key to continue to the menu..."
+								esperar tecla
 								error=322443243312
 							FinSi
 						FinSi
@@ -99,8 +102,14 @@ Algoritmo Grading_System
 					Si error=1
 						prom=(p1*0.3)+(p2*0.3)+(p3*0.4)
 						Escribir "Your average is: ", prom	
+						Si prom <7 Entonces
+							Escribir "You have to retake the course :<"
+						SiNo
+							Escribir "Congratulations, you passed!"
+						FinSi
 						error=23
 						Escribir "Press any key to go to the menu"
+						
 						Esperar Tecla
 					FinSi
 					
@@ -176,60 +185,68 @@ Algoritmo Grading_System
 				
 			Caso 3: //Baja definitiva Calculation - Justie
 				Borrar Pantalla
-				Escribir "How many basics did you fail? (Physics, Calculus, Algebra)"
+				Escribir "How many basic subjects did you fail? (Physics, Calculus, Algebra)"
 				Leer failedBasics
 				
-				Si (failedBasics<0 o failedBasics>3)
+				Mientras failedBasics < 0 o failedBasics > 3 Hacer
+					Borrar Pantalla
+					Escribir "Invalid format ([0-3] failed basic subjects)"
+					Leer failedBasics
+				FinMientras
+				
+				Escribir "How many subjects do you have in total?"
+				Leer total_subjects
+				
+				Mientras total_subjects<=0 o total_subjects>10 Hacer
+					Borrar Pantalla
+					Escribir "Invalid format ([1-10] total subjects)"
+					Leer total_subjects
+				FinMientras
+				
+				Mientras failedBasics>total_subjects Hacer
+					Borrar Pantalla
+					Escribir "Error: Cannot have a number higher than the total subjects"
+					Escribir "Re-enter total subjects"
+					Leer total_subjects
+				FinMientras
+				
+				Escribir "How many non-basic subjects did you fail?"
+				Leer failedSubjects
+				
+				Mientras failedSubjects<0 o (failedSubjects+failedBasics)>total_subjects Hacer
+					Escribir "Invalid format, re-enter failed subjects [0 -> Total Subjects]"
+					Leer failedSubjects
+				FinMientras
+				
+				Si (failedSubjects<0 o (failedSubjects+failedBasics)>total_subjects)
 					Escribir "How is this possible?"
 					Escribir "Exiting.."
 					Escribir ""
 					Esperar 1500 Milisegundos
 				SiNo
-					//Si (total_subjects<=0) //Takes an already filled variable
-						Escribir "How many subjects do you take?"
-						Leer total_subjects
-						//FinSi
-				FinSi
-				
-				Si (total_subjects<=0 o total_subjects>10 o failedBasics>total_subjects)
-					Escribir "Too many or too little subjects"
-					Escribir "Exiting.."
-					Escribir ""
-					Esperar 1500 Milisegundos
-				SiNo
-					Escribir "How many non-basics did you fail?"
-					Leer failedSubjects
+					Si (total_subjects%2)<>0 //To tell if a number is even or odd
+						total_subjects=total_subjects+1
+					FinSi
+					total_subjects=total_subjects/2 //half the subjects
 					
-					Si (failedSubjects<0 o (failedSubjects+failedBasics)>total_subjects)
-						Escribir "How is this possible?"
-						Escribir "Exiting.."
-						Escribir ""
-						Esperar 1500 Milisegundos
-					SiNo
-						Si (total_subjects%2)<>0 //To tell if a number is even or odd
-							total_subjects=total_subjects+1
-						FinSi
-						total_subjects=total_subjects/2 //half the subjects
-						
-						//Final stretch
-						Si (total_subjects>=(failedBasics+failedSubjects))
-							Escribir "Congrats! You may take the non ordinary exam OR retake them next semester"
-						FinSi
-						Si (total_subjects<(failedBasics+failedSubjects))
-							Si failedBasics=3
-								Escribir ""
-								Escribir "You are out :("
-								Escribir "..."
-								Escribir ""
-							SiNo
-								Escribir "You are unable to take the non ordinary exam (too many failed subjects)"
-								Escribir "However you may retake them next semester"
-								Escribir ""
-							FinSi
+					//Final stretch
+					Si (total_subjects>=(failedBasics+failedSubjects))
+						Escribir "Congrats! You may take the non ordinary exam OR retake them next semester"
+					FinSi
+					Si (total_subjects<(failedBasics+failedSubjects))
+						Si failedBasics=3
+							Escribir ""
+							Escribir "You are out :("
+							Escribir "..."
+							Escribir ""
+						SiNo
+							Escribir "You are unable to take the non ordinary exam (too many failed subjects)"
+							Escribir "However you may retake them next semester"
+							Escribir ""
 						FinSi
 					FinSi
 				FinSi
-				
+								
 				Escribir "Do you wish to exit the program? (y/n)"
 				Leer choice
 				
