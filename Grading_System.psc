@@ -53,7 +53,7 @@ Algoritmo Grading_System
 					FinMientras
 					Choice="Y"
 					mientras Choice="Y" o choice="y" y error=1
-						Escribir "Write your first partial grade"
+						Escribir "Write your second partial grade"
 						Leer p2
 						
 						Si p2<= 10 y p2>= 0
@@ -62,7 +62,7 @@ Algoritmo Grading_System
 							choice=N
 						SiNo
 							Escribir "Your grade needs to be between 0 and 10"
-							Escribir "Do you want to write your first partial grade again? Y/N"
+							Escribir "Do you want to write your second partial grade again? Y/N"
 							
 							Leer choice
 							Si choice ="y" o choice="Y"
@@ -84,7 +84,7 @@ Algoritmo Grading_System
 							choice=N
 						SiNo
 							Escribir "Your grade needs to be between 0 and 10"
-							Escribir "Do you want to write your first partial grade again? Y/N"
+							Escribir "Do you want to write your third partial grade again? Y/N"
 							
 							Leer choice
 							Si choice ="y" o choice="Y"
@@ -107,7 +107,8 @@ Algoritmo Grading_System
 					
 					
 				FinMientras
-				
+				choice="y"
+				error=1
 			Caso 2: //No ordinario Calculation - Eric
 				Borrar Pantalla
 				Escribir "How many hours per week is your failed subject?"
