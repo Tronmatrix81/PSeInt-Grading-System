@@ -8,8 +8,9 @@ Algoritmo Grading_System
 	Definir choice Como caracter
 	Definir p1,p2,p3,prom,error,r Como Real
 	Error=1
-
+	
 	Definir failedBasics Como Entero
+	Definir failedSubjects Como Real
 
 	Mientras run==Verdadero Hacer
 		Borrar Pantalla
@@ -133,7 +134,7 @@ Algoritmo Grading_System
 					Escribir "You are NOT able to present the No Ordinary Exam."
 				SiNo
 					Borrar Pantalla
-					Escribir "How many subjects coursed subjects do you have?"
+					Escribir "How many coursed subjects do you have?"
 					Leer total_subjects
 					
 					Mientras total_subjects <= 0 o total_subjects > 10 Hacer
@@ -174,14 +175,70 @@ Algoritmo Grading_System
 				Esperar Tecla
 				
 			Caso 3: //Baja definitiva Calculation - Justie
-				Escribir "How many basic subjects did you fail? (Physics, Calculus, Algebra)"
+				Borrar Pantalla
+				Escribir "How many basics did you fail? (Physics, Calculus, Algebra)"
 				Leer failedBasics
 				
-			Si !(failedBasics<0 o failedBasics>3)
-				Escribir "How is this possible?"
-				run = Falso
-			FinSi
-			
+				Si (failedBasics<0 o failedBasics>3)
+					Escribir "How is this possible?"
+					Escribir "Exiting.."
+					Escribir ""
+					Esperar 1500 Milisegundos
+				SiNo
+					//Si (total_subjects<=0) //Takes an already filled variable
+						Escribir "How many subjects do you take?"
+						Leer total_subjects
+						//FinSi
+				FinSi
+				
+				Si (total_subjects<=0 o total_subjects>10 o failedBasics>total_subjects)
+					Escribir "Too many or too little subjects"
+					Escribir "Exiting.."
+					Escribir ""
+					Esperar 1500 Milisegundos
+				SiNo
+					Escribir "How many non-basics did you fail?"
+					Leer failedSubjects
+					
+					Si (failedSubjects<0 o (failedSubjects+failedBasics)>total_subjects)
+						Escribir "How is this possible?"
+						Escribir "Exiting.."
+						Escribir ""
+						Esperar 1500 Milisegundos
+					SiNo
+						Si (total_subjects%2)<>0 //To tell if a number is even or odd
+							total_subjects=total_subjects+1
+						FinSi
+						total_subjects=total_subjects/2 //half the subjects
+						
+						//Final stretch
+						Si (total_subjects>=(failedBasics+failedSubjects))
+							Escribir "Congrats! You may take the non ordinary exam OR retake them next semester"
+						FinSi
+						Si (total_subjects<(failedBasics+failedSubjects))
+							Si failedBasics=3
+								Escribir ""
+								Escribir "You are out :("
+								Escribir "..."
+								Escribir ""
+							SiNo
+								Escribir "You are unable to take the non ordinary exam (too many failed subjects)"
+								Escribir "However you may retake them next semester"
+								Escribir ""
+							FinSi
+						FinSi
+					FinSi
+				FinSi
+				
+				Escribir "Do you wish to exit the program? (y/n)"
+				Leer choice
+				
+				Si choice = "y"
+					Escribir ""
+					Escribir "Exiting system.."
+					Esperar 1500 Milisegundos
+					run = Falso
+				FinSi
 				
 			Caso 4: //Equipo - Justie
 				Limpiar Pantalla
@@ -198,7 +255,6 @@ Algoritmo Grading_System
 				Esperar Tecla
 				
 			Caso 5: //Salir - Justie
-				Borrar Pantalla
 				Escribir "Exiting system..."
 				Esperar 1500 Milisegundos
 				run = Falso
